@@ -94,6 +94,42 @@ RxJava, Coroutine, Java(+ Kotlin), MVVM(혹은 MVP), Android Architecture Compon
 		}
 	}
 	~~~
+	
+## RxJava
+#### 반응형 프로그래밍(Reactive Programming)
+반응형 프로그래밍을 이야기하기 전에, 먼저 명령형 프로그래밍이라는 반대개념부터 이해하는 것이 좋다. 기본적으로 Java는 명령형 프로그래밍 언어기 때문.
+
+명령형 프로그래밍은 작성된 코드를 순차적으로 실행한다. 다음 코드를 보자
+~~~kotlin
+button.setOnClickListener {
+	doSomething()
+}
+~~~
+버튼의 클릭 이벤트를 처리하는 가장 전형적인 방법이다. 이 방법은 버튼 객체 내부의 View.OnClickListener 인터페이스를 구현하는 방식으로 이벤트를 처리한다.
+-- 미완성 -- 
+
+#### Hot Observable과 Cold Observable의 차이
+- Cold Observable : 해당 Observable을 subscribe하면 그 때부터 데이터(이벤트)를 발행하는 observable
+- Hot Observable : 생성 즉시 데이터를 발행하는 observable. observable 생성 직후부터 subscribe 전까지 발행된 데이터에 대해서는 손실이 일어날 수 있다.
+
+#### subscribeOn과 observeOn 메소드의 차이
+- SubscribeOn : subscribe에서 사용할 스레드를 지정.
+- ObserveOn : observable이 연산자를 타고 가면서 처리될 때, ObserveOn 메소드 다음의 연산자는 모두 ObservableOn에서 지정한 스레드에서 실행된다.
+- 다만, subscribeOn 메소드는 subscribe 블록이 돌아갈 스레드를 지정하는 것이므로 subscribeOn이 불리고 나서 observeOn이 불리더라도 subscribe 실행 시의 쓰레드에는 영향을 미치지 않는다.
+
+#### RxJava (RxBinding) 를 사용한 버튼 중복클릭 방지
+- Jake Wharton님이 만든 RxBinding 라이브러리를 사용하면 throttleFirst() 연산자를 사용한 버튼 중복클릭 방지 코드를 쉽게 짤 수 있다.
+	~~~kotlin
+	button.clicks()
+		.throttleFirst(600L, TimeUnit.MILLISECONDS)
+		.observeOn(AndroidSchedulers.mainThread()
+		.subscribe({
+			doSomething()
+		}) {
+			handleError()
+		}
+	~~~
+
 ## Reference
 - [https://thdev.tech/](https://thdev.tech/)
 - [https://www.androidhuman.com/](https://www.androidhuman.com/)
