@@ -95,6 +95,6 @@ RxJava, Coroutine, Java(+ Kotlin), MVVM(혹은 MVP), Android Architecture Compon
 	}
 	~~~
 ## Reference
-[https://thdev.tech/](https://thdev.tech/)
-[https://www.androidhuman.com/](https://www.androidhuman.com/)
-[https://c10106.tistory.com/](https://c10106.tistory.com/)
+- [https://thdev.tech/](https://thdev.tech/)
+- [https://www.androidhuman.com/](https://www.androidhuman.com/)
+- [https://c10106.tistory.com/](https://c10106.tistory.com/)
