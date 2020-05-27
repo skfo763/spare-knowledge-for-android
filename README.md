@@ -59,7 +59,7 @@ RxJava, Coroutine, Java(+ Kotlin), MVVM(혹은 MVP), Android Architecture Compon
 
 ## Android Component
 #### Activity
-![이미지](./art/activity_lifecycle)
+![이미지](./arts/activity_lifecycle.jpeg)
 - 라이프사이클 메소드 중 onStop()과 onDestory() 는 실행이 보장되지 않는다. 우선순위가 높은 앱이 메모리가 부족하다면 시스템이 임의로 언제든지 액티비티를 죽여버릴 수 있기 때문.
 - 액티비티가 실행중인 상태에서 화면이 회전할 경우
 	- onPause -> onStop -> onDestroy 이 순차적으로 호출되어 액티비티가 종료된 후,
